@@ -10,15 +10,41 @@
     <div class="w-full flex flex-col min-h-screen items-center justify-center">
       <h1 class="text-4xl">Perritos Aleatorios</h1>
 
-      <div id="images"></div>
-      <!-- <img id="image" class="max-w-sm mt-4" alt="Foto perro aletorio" /> -->
+      <section id="randomDogs">
+        <div id="images"></div>
+        <button
+          id="refresh"
+          class="bg-blue-500 px-2 py-1 rounded-md mt-4 text-lg"
+        >
+          Recargar
+        </button>
+      </section>
 
-      <button
-        id="refresh"
-        class="bg-blue-500 px-2 py-1 rounded-md mt-4 text-lg"
-      >
-        Recargar
-      </button>
+      <section class="text-center" id="favoritesDogs">
+        <h1 class="text-4xl font-bold">Favoritos</h1>
+        <div id="imagesFavorites"></div>
+        <button
+          id="refreshFavorites"
+          class="bg-blue-500 px-2 py-1 rounded-md mt-4 text-lg"
+        >
+          Recargar
+        </button>
+      </section>
+
+      <!-- <div class="flex justify-center items-center">
+        <img
+          src="https://cdn2.thedogapi.com/images/ry1kWe5VQ_1280.jpg"
+          id="image"
+          class="max-w-sm mt-4"
+          alt="Foto perro aletorio"
+        />
+        <button
+          id="refreshFavorites"
+          class="bg-blue-500 px-2 py-1 rounded-md mt-4 text-lg flex"
+        >
+          Recargar
+        </button>
+      </div> -->
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
