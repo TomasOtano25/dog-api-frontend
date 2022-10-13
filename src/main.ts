@@ -7,9 +7,9 @@ interface Response {
   height: number;
 }
 
-const URL = "https://api.thedogapi.com/v1/images/search";
+const API_URL = "https://api.thedogapi.com/v1/images/search";
 
-const image = document.querySelector<HTMLImageElement>("#image");
+const images = document.querySelector<HTMLDivElement>("#images");
 const btnRefresh = document.querySelector<HTMLButtonElement>("#refresh");
 
 async function fetchData(urlApi: string): Promise<Response[]> {
@@ -18,15 +18,27 @@ async function fetchData(urlApi: string): Promise<Response[]> {
   return data;
 }
 
-async function render() {
-  const imageSrc: Response[] = await fetchData(URL);
-  image!.src = imageSrc[0].url;
+// async function reload() {
+//   const imageSrc: Response[] = await fetchData(API_URL);
+//   image!.src = imageSrc[0].url;
+// }
+
+async function reload() {
+  images!.innerHTML = "";
+
+  const imagesSrc: Response[] = await fetchData(`${API_URL}?limit=3`);
+
+  imagesSrc.forEach((item) => {
+    const image = document.createElement("img");
+    image.src = item.url;
+    image.className = "max-w-sm mt-4";
+
+    images!.append(image);
+  });
 }
 
 btnRefresh!.addEventListener("click", () => {
-  render();
+  reload();
 });
 
-(async () => {
-  render();
-})();
+reload();
